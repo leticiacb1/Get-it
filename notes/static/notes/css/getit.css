@@ -165,7 +165,7 @@ body {
 .autoresize {
   
   display: flex;
-  height: 50%;
+  min-height: 20px;
 
   resize: none;
   font-family: 'Roboto', sans-serif;
@@ -260,7 +260,7 @@ body {
   height: 38%;
   padding: 0.2rem;
 
-  margin: 0 0.4rem;
+  margin: 0 0.7rem;
 
   justify-content: space-around;
 }
@@ -268,11 +268,14 @@ body {
 .card-title {
   display: flex;
   justify-content: center;
+  text-align: center;
   font-family: 'Permanent Marker', cursive;
   font-weight: bold;
+
+  margin-top: 0.1rem;
 }
 
-.note-id {
+/* .note-id {
   position: fixed;
 
   top: 0;
@@ -284,7 +287,7 @@ body {
   font-family: 'Permanent Marker', cursive;
   font-size: small;
   color: #4c4c4c;
-}
+} */
 
 .card-content {
   font-family: 'Permanent Marker', cursive;
@@ -294,6 +297,18 @@ body {
   height: 3rem;
   padding-left: 0.5rem;
   margin-top: 1rem;
+
+  display: flex;
+  min-height: 20px;
+  outline: 0;
+
+  resize: none;
+}
+
+.card-content, .card-title {
+  background: none;
+	color: inherit;
+	border: none;
 }
 
 .card-icon {
@@ -305,7 +320,10 @@ body {
 i {
   margin: 0rem 0.4rem;
 }
-/* 
+
+/* Novas configurações setadas após apertar o icon editar*/
+/* Card de edição */
+
 .overlay {
   display: none;
   position: fixed;
@@ -348,6 +366,10 @@ i {
 
 }
 
+#id_notEdit{
+  display:none;
+}
+
 .edit-header {
   display: flex;
   justify-content: space-between;
@@ -381,6 +403,7 @@ i {
   height: 3rem;
 
   margin-left: 0.15rem;
+  margin-top: 0.2rem;
 
 }
 
@@ -413,9 +436,10 @@ i {
   background-color: #32CD32;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 
-  margin-top: 2rem;
+  margin-top: 1rem;
 
 }
+/* Fim de configurações para card de editar*/
 
 .delete, .edit , .close-over, .delete_all, .take_off_filtro {
   background: none;
@@ -434,7 +458,7 @@ i {
   right: 0;
 
   margin-bottom: 0.5rem;
-} */
+} 
 
 .card-color-1 {
   background-color: #ead3a7;

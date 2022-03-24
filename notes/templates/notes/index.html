@@ -8,41 +8,107 @@
 </div>
 
 <main class="container">
+  
+    <form method="post" class="form-card" autocomplete="off">
+      {% csrf_token %}
+      
+      <!-- <label for="titulo">Título</label> -->
+      <input
+        class="form-card-title"
+        type="text"
+        name="titulo"
+        placeholder="Titulo"
+      />
 
-  <form method="post" class="form-card" autocomplete="off">
-    {% csrf_token %}
+      <!-- <label for="tag">Tag</label> -->
+      <input
+        class="form-card-tag"
+        type="text"
+        name="tag"
+        placeholder="Tag"
+      />
+
+      <!-- <label for="detalhes">Detalhes</label> -->
+      <textarea
+        class="autoresize"
+        name="detalhes"
+        placeholder="Digite o conteudo..."
+      ></textarea>
+
+      <button class="btn" type="submit" name="criar">Criar</button>
+
+    </form>
+  
+  <div class="card-container" id="card-sorted">
     
-    <!-- <label for="titulo">Título</label> -->
-    <input
-      class="form-card-title"
-      type="text"
-      name="titulo"
-      placeholder="Titulo"
-    />
+    {% for note in anotacoes %}
+      <form method="post" class="card" action="/deletar">
+        {% csrf_token %}
 
-    <!-- <label for="tag">Tag</label> -->
-    <input
-      class="form-card-tag"
-      type="text"
-      name="tag"
-      placeholder="Tag"
-    />
+        <!-- Mudando todos os campos para inputs-->
+        <input class="card-title" value="{{note.title}}" name="titulo" readonly></input>
+        <textarea class="card-content" placeholder="{{note.content}}" value="{{note.content}}" name="detahes" readonly></textarea>
+        <input style="display: none;" value="{{note.id}}" name="id" > </input>
+        <input style="display: none;" value="{{note.tag}}"name="tag" ></input>
+    
+        <div class="card-icon">
+          <button name="edit" class="edit" type="button" value="{{note.id}}" onclick="update_card(this)">
+            <i class="material-icons">&#xe254;</i>
+          </button>
+          <button name="delete" class='delete' type="submit" value="{{note.id}}">
+            <i class="material-icons">&#xe872;</i>
+          </button>
+        </div>
+      </form>
+    {% endfor %}
+    
+  </div>
 
-    <!-- <label for="detalhes">Detalhes</label> -->
-    <textarea
-      class="autoresize"
-      name="detalhes"
-      placeholder="Digite o conteudo..."
-    ></textarea>
-
-    <button class="btn" type="submit" name="criar">Criar</button>
-
+  <form method="post" action="/deletar_tudo">
+    {% csrf_token %}
+    <button name="clear_all" class="delete_all"  type="submit">
+      <i class="material-icons" style="font-size:30px;" >&#xe92b;</i>
+    </button>
   </form>
-
 </main>
 
-<div class="card-container" id="card-sorted">
-  {% block note %} {% endblock %}
-</div>
+ <!--Após clicar em editar ativa modal-->
+ <div class="overlay">
+  
+  <div class="over-content">
+    <form method="post" class="form-edit" autocomplete="off" action="atualizar">
+      {% csrf_token %}
+      
+      <div class="edit-header">
+        
+        <input
+          class="form-card-title" type="text" name="titulo" placeholder="Titulo" id="edit-Title"
+        />
+        <button class="close-over" type="button" onclick="close_update_card(this)">
+          <i class="material-icons">&#xe14c;</i>
+        </button>
+
+      </div>
+
+      <!--readOnly por enquanto.-->
+      <input
+        class="form-card-tag" type="text" name="tag" placeholder="Tag" id = "edit_tag" readonly     
+      />
+      
+      <input type="text" name="detalhes" id="edit-Detalhes" />
+
+      <input 
+        type="text" name = "id_notEdit" id = "id_notEdit" class = "id_notEdit"
+      />
+
+      <div id = "div_atualizar">
+        <button class="btn" type="submit" name="update" id="atualizar">Atualizar</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div> 
 
 {% endblock %}
