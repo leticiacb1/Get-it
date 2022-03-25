@@ -8,11 +8,11 @@
 </div>
 
 <main class="container">
-  
+
+  <!------------FORMULARIO DE CRIACAO----------------->
     <form method="post" class="form-card" autocomplete="off">
       {% csrf_token %}
       
-      <!-- <label for="titulo">Título</label> -->
       <input
         class="form-card-title"
         type="text"
@@ -20,7 +20,6 @@
         placeholder="Titulo"
       />
 
-      <!-- <label for="tag">Tag</label> -->
       <input
         class="form-card-tag"
         type="text"
@@ -28,7 +27,6 @@
         placeholder="Tag"
       />
 
-      <!-- <label for="detalhes">Detalhes</label> -->
       <textarea
         class="autoresize"
         name="detalhes"
@@ -38,19 +36,23 @@
       <button class="btn" type="submit" name="criar">Criar</button>
 
     </form>
+    <!---------------------------------------------->
   
+    <!------------ CARDS ---------------->
   <div class="card-container" id="card-sorted">
     
     {% for note in anotacoes %}
       <form method="post" class="card" action="/deletar">
         {% csrf_token %}
 
-        <!-- Mudando todos os campos para inputs-->
+        <!--Content-->
         <input class="card-title" value="{{note.title}}" name="titulo" readonly></input>
         <textarea class="card-content" placeholder="{{note.content}}" value="{{note.content}}" name="detahes" readonly></textarea>
         <input style="display: none;" value="{{note.id}}" name="id" > </input>
         <input style="display: none;" value="{{note.tag}}"name="tag" ></input>
-    
+        <!----------->
+
+        <!--- Botoes Icons -->
         <div class="card-icon">
           <button name="edit" class="edit" type="button" value="{{note.id}}" onclick="update_card(this)">
             <i class="material-icons">&#xe254;</i>
@@ -59,56 +61,75 @@
             <i class="material-icons">&#xe872;</i>
           </button>
         </div>
+        <!------------------->
+
       </form>
     {% endfor %}
-    
   </div>
-
-  <form method="post" action="/deletar_tudo">
-    {% csrf_token %}
-    <button name="clear_all" class="delete_all"  type="submit">
-      <i class="material-icons" style="font-size:30px;" >&#xe92b;</i>
-    </button>
-  </form>
+  <!------------------------------------>
 </main>
 
- <!--Após clicar em editar ativa modal-->
- <div class="overlay">
+<!-- Botão apagar todas as notes-->
+<form method="post" action="/deletar_tudo">
+  {% csrf_token %}
+  <button name="clear_all" class="delete_all"  type="submit">
+    <i class="material-icons" style="font-size:30px;" >&#xe92b;</i>
+  </button>
+</form>
+<!-------------------------------->
+
+<!-- Container de tags e filtro -->
+<div class="content-filtro">
+  <button name="sem_filtro" class="take_off_filtro"  onclick="takeOff()">
+    <i class="material-icons" style="font-size:10px;font-size:25px;" >&#xe8f4;</i>
+  </button>
+
+  <div class="div-tags">
+    <form action="\tag_filtrada">
+      {% for tag in tags %}
+      <button name="filtro_tag" type="submit" class="tags">
+        {{tag.tag_name}}
+      </button>
+      {% endfor %}
+    </form>
+  </div>
+</div>
+<!-- -------------------------- -->
   
+ <!--Após clicar em editar ativa modal -->
+ <div class="overlay">
   <div class="over-content">
     <form method="post" class="form-edit" autocomplete="off" action="atualizar">
       {% csrf_token %}
       
+      <!-- Header-->
       <div class="edit-header">
-        
         <input
           class="form-card-title" type="text" name="titulo" placeholder="Titulo" id="edit-Title"
         />
         <button class="close-over" type="button" onclick="close_update_card(this)">
           <i class="material-icons">&#xe14c;</i>
         </button>
-
       </div>
+      <!----------->
 
-      <!--readOnly por enquanto.-->
-      <input
-        class="form-card-tag" type="text" name="tag" placeholder="Tag" id = "edit_tag" readonly     
-      />
-      
+      <!-----------  BODY -------------->
+
+      <input class="form-card-tag" type="text" name="tag"  id = "edit_tag"  readonly/>
       <input type="text" name="detalhes" id="edit-Detalhes" />
+      <input type="text" name = "id_notEdit" id = "id_notEdit" class = "id_notEdit"/>
+      <!------------------------------->
 
-      <input 
-        type="text" name = "id_notEdit" id = "id_notEdit" class = "id_notEdit"
-      />
-
+      <!-------BOTAO ATUALIZAR--------->
       <div id = "div_atualizar">
         <button class="btn" type="submit" name="update" id="atualizar">Atualizar</button>
       </div>
+      <!------------------------------->
 
     </form>
 
   </div>
-
 </div> 
+<!-------------------------------->
 
 {% endblock %}

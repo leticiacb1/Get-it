@@ -11,21 +11,20 @@ function update_card(btn) {
 
     // localizar formulário que contem informações do card:
     let form_card = btn.parentElement.parentElement;
-    //let botao_atualizar = document.querySelector("#atualizar")
 
     let old_title = form_card.children[1].getAttribute("value")
     let old_desc = form_card.children[2].getAttribute("value")
     let id = form_card.children[3].getAttribute("value")
-    // Ainda nao vai aparecer na tela.
     let old_tag = form_card.children[4].getAttribute("value")
 
     let title_to_edit = document.querySelector("#edit-Title")
     let desc_to_edit = document.querySelector("#edit-Detalhes")
     let tag_to_edit = document.querySelector("#edit_tag")
     let id_notEdit = document.querySelector('#id_notEdit')
-    
+
     // Atualizando o valor do formulario de edit para o valor do card
     title_to_edit.setAttribute("value", old_title)
     desc_to_edit.setAttribute("value", old_desc)
     id_notEdit.setAttribute("value", id)
+    tag_to_edit.setAttribute("value", old_tag)
 }

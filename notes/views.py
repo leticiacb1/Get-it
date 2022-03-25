@@ -1,34 +1,36 @@
+from asyncio.windows_events import NULL
 from urllib.request import Request
 from django.shortcuts import render, redirect
-from .models import Note
+from .models import Note, Tag
 
 
 def index(request):
     # return HttpResponse("Olá mundo! Este é o app notes de Tecnologias Web do Insper.")
-    all_notes = Note.objects.all()  # Carregando entradas da tabela
+    # Carregando entradas da tabela
     # objcts é um objeto do tipo Django que permite a interação com o bd.
     # all() lista todas as entradas, temos filter() , o get () etc.
-    notes = {}
-    notes['anotacoes'] = all_notes
+
+    all_notes = Note.objects.all() 
+    all_tags = Tag.objects.all()
 
     if (request.method == 'GET'):
-        return render(request, 'notes/index.html', context = notes)
+        return render(request, 'notes/index.html', context = {'anotacoes': all_notes , 'tags': all_tags})
 
     elif (request.method == 'POST'):
-        # Apenas entra nessa condição quando a ideia for criar uma nova nota
+
         title = request.POST.get('titulo')
-        content = request.POST.get('detalhes')
-        
-        nova_nota = Note(title = title, content = content)
+        content = request.POST.get('detalhes') 
+        # Tag é opcional:
+        tag = request.POST.get('tag')
+
+        # Verifica se o valor da Tag não é vazio:
+        if tag != NULL or tag != "":
+            tag  = Tag(tag_name = tag)
+            tag.save()
+
+        nova_nota = Note(title = title, content = content, tag= tag)
         nova_nota.save()
 
-        #  Tratando de outra forma, por meio do nome do botão e do id enviado pelo value dele.
-        # elif('delete' in request.POST):
-        #     id = request.POST.get('delete')
-            
-        #     note_to_delete = Note.objects.get(id=id)
-        #     note_to_delete.delete()
-        
         return redirect('index')
 
 # Novas rotas, argumento actions do formulário.
@@ -45,6 +47,8 @@ def deletar(request):
 def deletar_tudo(request):
 
     Note.objects.all().delete()
+    Tag.objects.all().delete()
+    
     return redirect('index')
 
 def atualizar(request):
