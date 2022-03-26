@@ -1,0 +1,32 @@
+{% extends "notes/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="appbar">
+  <img src="{% static 'notes/img/logo-getit.png' %}" class="logo"/>
+  <p class="subtitle" style="font-weight: 600;justify-content: center;align-items: center;">Lista de Tags</p>
+  
+  <form action="/" class="back_index">
+    <button class="go_back" type="submit">
+      <i class="material-icons">&#xe15e;</i>
+    </button>
+  </form>
+  
+</div>
+
+<main class="container-tags">
+
+    <div class="div-tags-telaTags">
+      {% for tag in tags %}
+      <form method="post" class="card_tag" action="/tag_filtrada">
+        <button name="filtro_tag" type="submit" class="buttons-tags">
+            {{tag.tag_name}}
+        </button>
+      </form>
+      {% endfor %}
+    </div>
+    
+
+</main>
+
+{% endblock %}

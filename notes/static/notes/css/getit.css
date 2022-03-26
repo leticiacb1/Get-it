@@ -105,6 +105,11 @@ body {
   height: 2.5rem;
 }
 
+.form_tags_all{
+  position: absolute;
+  right: 0.2rem;
+}
+
 .subtitle {
 
   padding-left: 1rem;
@@ -115,7 +120,7 @@ body {
 .container{
   display:flex;
   flex-direction: column;
-  height: 80%;
+  height: 83%;
 
   justify-content: flex-start;
   align-items: center;
@@ -205,7 +210,7 @@ body {
   border-top-width:0.05rem;
   border-style:inset;
 
-  margin-top: 0.2rem;
+  margin-top: 0.3rem;
 
 }
 
@@ -216,13 +221,15 @@ body {
   
   width: 100%;
   height: 100%;
+
+  margin-top: 0.2rem;
 }
 
 .tags{
   margin: 0 0.3rem 0.1rem 0.3rem;
 
   height: 1.8rem;
-  width: 4rem;
+  width: 6rem;
 
   border-radius: 2px;
   border-width: 0;
@@ -231,6 +238,7 @@ body {
   background-color: #f7d736;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 	
+  cursor: pointer;
 }
 
 /*--------------------------------*/
@@ -427,7 +435,7 @@ i {
 }
 /* Fim de configurações para card de editar*/
 
-.delete, .edit , .close-over, .delete_all, .take_off_filtro {
+.delete, .edit , .close-over, .delete_all, .take_off_filtro, .all_tags {
   background: none;
 	color: inherit;
 	border: none;
@@ -436,13 +444,81 @@ i {
 	cursor: pointer;
 	outline: inherit;
 }
-.delete_all{
-  display: flex;
-  width: 100%;
-  justify-content: flex-end;
+.delete_all {
+  position: absolute;
+  right: 0.1rem;
+  bottom: 3.5rem;
 
   margin-bottom: 0.1rem;
 }
+
+
+/* ----------------- ALL_TAG PAGE ----------------------*/
+
+.container-tags{
+  display: flex;
+  width: 100%;
+  height: 20%;
+}
+
+.back_index{
+  position: absolute;
+  right: 0.2rem;
+}
+
+
+.go_back {
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  
+}
+
+.div-tags-telaTags {
+
+  display: flex;
+  justify-content: space-evenly;
+  
+  width: 100%;
+  height: 15%;
+
+  margin-top: 2rem;
+
+}
+
+.card_tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 1px 9px rgba(0, 0, 0, 0.6);
+  border-radius: 0.2rem;
+
+  width: 10%;
+  height: 3rem;
+  padding: 0.2rem;
+
+  margin: 0 0.7rem;
+}
+
+.buttons-tags{
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+
+  font-family: 'Permanent Marker', cursive;
+  font-size: small;
+}
+
+/*--------------------------------------*/
 
 .card-color-1 {
   background-color: #ead3a7;

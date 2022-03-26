@@ -5,6 +5,13 @@
 <div class="appbar">
   <img src="{% static 'notes/img/logo-getit.png' %}" class="logo"/>
   <p class="subtitle">Como o Post-it, mas com outro verbo</p>
+  
+  <form action="/all_tags" class="form_tags_all" >
+    <button class="all_tags" type="submit">
+      <i class="material-icons">&#xe98b;</i>
+    </button>
+  </form>
+  
 </div>
 
 <main class="container">
@@ -18,19 +25,21 @@
         type="text"
         name="titulo"
         placeholder="Titulo"
+        required
       />
 
       <input
         class="form-card-tag"
         type="text"
         name="tag"
-        placeholder="Tag"
+        placeholder="Tag (Opcional)"
       />
 
       <textarea
         class="autoresize"
         name="detalhes"
         placeholder="Digite o conteudo..."
+        required
       ></textarea>
 
       <button class="btn" type="submit" name="criar">Criar</button>
@@ -81,11 +90,11 @@
 <!-- Container de tags e filtro -->
 <div class="content-filtro">
   <button name="sem_filtro" class="take_off_filtro"  onclick="takeOff()">
-    <i class="material-icons" style="font-size:10px;font-size:25px;" >&#xe8f4;</i>
+    <i class="material-icons" style="font-size:10px;font-size:25px;margin-top: 0.1rem;" >&#xe8f4;</i>
   </button>
 
   <div class="div-tags">
-    <form action="\tag_filtrada">
+    <form action="/tag_filtrada">
       {% for tag in tags %}
       <button name="filtro_tag" type="submit" class="tags">
         {{tag.tag_name}}
@@ -105,7 +114,7 @@
       <!-- Header-->
       <div class="edit-header">
         <input
-          class="form-card-title" type="text" name="titulo" placeholder="Titulo" id="edit-Title"
+          class="form-card-title" type="text" name="titulo" placeholder="Titulo" id="edit-Title" required
         />
         <button class="close-over" type="button" onclick="close_update_card(this)">
           <i class="material-icons">&#xe14c;</i>
@@ -116,7 +125,7 @@
       <!-----------  BODY -------------->
 
       <input class="form-card-tag" type="text" name="tag"  id = "edit_tag"  readonly/>
-      <input type="text" name="detalhes" id="edit-Detalhes" />
+      <input type="text" name="detalhes" id="edit-Detalhes" required/>
       <input type="text" name = "id_notEdit" id = "id_notEdit" class = "id_notEdit"/>
       <!------------------------------->
 
