@@ -60,14 +60,15 @@ def deletar(request):
     #  Pegando id, enviado pelo input id do formulário.
     id = request.POST.get('id')
     note_to_delete = Note.objects.get(id=id)
-    tag_deletada = note_to_delete.tag.tag_name
+    tag_deletada = note_to_delete.tag
     note_to_delete.delete()
-
+    
     # Caso não exista mais notes associadas a uma tag, apagar a tag tambem:
-    tags_em_notas = [note.tag.tag_name for note in all_notes]
-    if tag_deletada not in tags_em_notas:
-        tag_to_delete = Tag.objects.get(tag_name=tag_deletada)
-        tag_to_delete.delete()
+    if(tag_deletada):
+        tags_em_notas = [note.tag for note in all_notes]
+        if tag_deletada not in tags_em_notas:
+            tag_to_delete = Tag.objects.get(tag_name=tag_deletada.tag_name)
+            tag_to_delete.delete()
         
     return redirect('index')
 
