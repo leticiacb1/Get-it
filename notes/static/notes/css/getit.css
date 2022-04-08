@@ -197,7 +197,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-/*-------------FOOTER---------------*/
+/*-------------CONTAINER TAGS--------------*/
 
 .content-filtro{
   display: flex;
@@ -230,14 +230,17 @@ body {
   height: 1.8rem;
   width: 6rem;
 
-  border-radius: 2px;
-  border-width: 0;
-  outline: none;
+  border-radius: 0.4rem;
+  border-width: 0.05rem;
+  border-style: inset;
+  
+  color: #ff8c00;
+  font-family: 'Permanent Marker', cursive;
+  font-size: small;
 
-  background-color: #f7d736;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-	
-  cursor: pointer;
+  background: none;
+	cursor: pointer;
+	outline: inherit;
 }
 
 /*--------------------------------*/
@@ -316,7 +319,17 @@ i {
 
 .footer_card{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.tag_name{
+  font-family: 'Permanent Marker', cursive;
+  font-size: x-small;
+
+  padding: 0.15rem 0.15rem;
+  border: 0.1rem inset black;
+  border-radius: 0.4rem;
 }
 
 /* Novas configurações setadas após apertar o icon editar*/

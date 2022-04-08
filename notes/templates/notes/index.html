@@ -77,18 +77,24 @@
         <input style="display: none;" value="{{note.tag}}"name="tag" ></input>
         <!----------->
 
-        <!--- Botoes Icons -->
-        <div class="card-icon">
-          <button name="edit" class="edit" type="button" value="{{note.id}}" onclick="update_card(this)">
-            <i class="material-icons">&#xe254;</i>
-          </button>
-          <button name="delete" class='delete' type="submit" value="{{note.id}}">
-            <i class="material-icons">&#xe872;</i>
-          </button>
+        <div class="footer_card">
+          <div class="tag_name">
+            <span>#</span>
+            <span>{{note.tag}}</span>
+          </div>
+          <!--- Botoes Icons -->
+          <div class="card-icon">
+            <button name="edit" class="edit" type="button" value="{{note.id}}" onclick="update_card(this)">
+              <i class="material-icons">&#xe254;</i>
+            </button>
+            <button name="delete" class='delete' type="submit" value="{{note.id}}">
+              <i class="material-icons">&#xe872;</i>
+            </button>
+          </div>
+          <!------------------->
         </div>
-        <!------------------->
-        
       </form>
+
     {% endfor %}
   </div>
   <!------------------------------------>
