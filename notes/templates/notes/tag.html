@@ -4,7 +4,7 @@
 
 <div class="appbar">
   <img src="{% static 'notes/img/logo-getit.png' %}" class="logo"/>
-  <p class="subtitle" style="font-weight: 600;justify-content: center;align-items: center;">Lista de Tags</p>
+  <p class="subtitle" style="font-weight: 400;justify-content: center;align-items: center;">Lista de Tags</p>
   
   <form action="/" class="back_index">
     <button class="go_back" type="submit">
@@ -14,15 +14,24 @@
   
 </div>
 
+<div class="instrucoes">
+  <div class="info_div">
+    <h3 class="info_text">
+      Clique em uma tag para ver as notas correspondentes
+    </h3>
+  </div>
+</div>
+
 <main class="container-tags">
 
     <div class="div-tags-telaTags">
       {% for tag in tags %}
       <form method="post" class="card_tag" action="/tag_filtrada">
         {% csrf_token %}
-        <input style="display: none;" value="{{tag}}" name="tag_name" > </input>
+        <input style="display: none;" value="{{tag}}" name="tag_name" > </input>        
+        <i class="material-icons" id="pin_push">&#xf10d;</i>
         <button type="submit" class="buttons-tags">
-            {{tag.tag_name}}
+              {{tag.tag_name}}
         </button>
       </form>
       {% endfor %}
