@@ -1,0 +1,55 @@
+{% extends "notes/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="appbar">
+  <img src="{% static 'notes/img/logo-getit.png' %}" class="logo"/>
+  <p class="subtitle" style="font-weight: 600;justify-content: center;align-items: center;">Notas Específicas</p>
+  
+  <form action="/" class="back_index">
+    <button class="go_back" type="submit">
+      <i class="material-icons">&#xe15e;</i>
+    </button>
+  </form>
+  
+</div>
+
+<div class="name_tag">
+  <h1>Tag selecionada:</h1>
+  <button type="button" class="tag_selecionada">{{tag_selecionada}}</button>
+</div>
+
+<main class="container-tags">
+
+  <div class="card-container" id="card-sorted">
+    
+    {% for note in anotacoes %}
+      <form method="post" class="card" action="/deletar">
+        {% csrf_token %}
+
+        <!--Content-->
+        <input class="card-title" value="{{note.title}}" name="titulo" readonly></input>
+        <textarea class="card-content" placeholder="{{note.content}}" value="{{note.content}}" name="detahes" readonly></textarea>
+        <input style="display: none;" value="{{note.id}}" name="id" > </input>
+        <input style="display: none;" value="{{note.tag}}"name="tag" ></input>
+        <!----------->
+
+        <!--- Botoes Icons -->
+        <div class="card-icon">
+          <!-- <button name="edit" class="edit" type="button" value="{{note.id}}" onclick="update_card(this)">
+            <i class="material-icons">&#xe254;</i>
+          </button> -->
+          <button name="delete" class='delete' type="submit" value="{{note.id}}">
+            <i class="material-icons">&#xe872;</i>
+          </button>
+        </div>
+        <!------------------->
+
+      </form>
+    {% endfor %}
+  </div>
+
+</main>
+
+
+{% endblock %}

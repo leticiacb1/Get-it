@@ -1,6 +1,7 @@
 from asyncio.windows_events import NULL
 from urllib.request import Request
 from django.shortcuts import render, redirect
+from django.test import tag
 from .models import Note, Tag
 
 
@@ -52,6 +53,14 @@ def see_all_tags(request):
 
     return render(request, 'notes/tag.html', context = {'anotacoes': all_notes , 'tags': all_tags})
 
+def tag_filtrada(request):
+    
+    tag = request.POST.get('tag_name')
+    notes_filtradas_por_tag = Note.objects.filter(tag__tag_name=tag)
+    print(notes_filtradas_por_tag)
+
+    return render(request, 'notes/tagANDnotes.html', context = {'anotacoes': notes_filtradas_por_tag , 'tag_selecionada': tag})
+
 # Novas rotas, argumento actions do formulário.
 def deletar(request):
 
@@ -62,7 +71,7 @@ def deletar(request):
     note_to_delete = Note.objects.get(id=id)
     tag_deletada = note_to_delete.tag
     note_to_delete.delete()
-    
+
     # Caso não exista mais notes associadas a uma tag, apagar a tag tambem:
     if(tag_deletada):
         tags_em_notas = [note.tag for note in all_notes]

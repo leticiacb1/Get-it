@@ -14,6 +14,22 @@
   
 </div>
 
+<!-- Container de tags e filtro -->
+<div class="content-filtro">
+  <div class="div-tags">
+    {% for tag in tags %}
+    <form action="/tag_filtrada" method="post">
+      {% csrf_token %}
+      <input style="display: none;" value="{{tag}}" name="tag_name" > </input>
+      <button type="submit" class="tags">
+        {{tag.tag_name}}
+      </button>
+    </form>
+    {% endfor %}
+  </div>
+</div>
+<!-- -------------------------- -->
+
 <main class="container">
 
   <!------------FORMULARIO DE CRIACAO----------------->
@@ -86,24 +102,6 @@
   </button>
 </form>
 <!-------------------------------->
-
-<!-- Container de tags e filtro -->
-<div class="content-filtro">
-  <button name="sem_filtro" class="take_off_filtro"  onclick="takeOff()">
-    <i class="material-icons" style="font-size:10px;font-size:25px;margin-top: 0.1rem;" >&#xe8f4;</i>
-  </button>
-
-  <div class="div-tags">
-    <form action="/tag_filtrada">
-      {% for tag in tags %}
-      <button name="filtro_tag" type="submit" class="tags">
-        {{tag.tag_name}}
-      </button>
-      {% endfor %}
-    </form>
-  </div>
-</div>
-<!-- -------------------------- -->
   
  <!--Após clicar em editar ativa modal -->
  <div class="overlay">
