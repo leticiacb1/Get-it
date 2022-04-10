@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 from urllib.request import Request
 from django.shortcuts import render, redirect
 from django.test import tag
