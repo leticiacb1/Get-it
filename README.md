@@ -1,4 +1,4 @@
-"# Get-it : Como o Post-it, mas com outro verbo" 
+#Get-it : Como o Post-it, mas com outro verbo
 
 
 ## Descrição do Projeto
@@ -50,7 +50,7 @@ Pastas e arquivos de interesse:
 
 ## Instruções de uso 
 
-> **Rodando Localmente - Windows**
+> ## Rodando Localmente - Windows
 
 1. Realizar o clone do repositório.
 
@@ -65,10 +65,7 @@ pip install -r requirements.txt
 
 3. Para rodagem do arquivo local, verificar se a variável DEBUG em `getit/settings.py` está com valor True.
 
-4. Criar um container Docker com imagem Postgres. 
-
-<p> <a href = "https://docs.docker.com/get-docker/"> Baixe o Docker</a> </p>
-
+4. Criar um container Docker com imagem Postgres. <p> <a href = "https://docs.docker.com/get-docker/"> Baixe o Docker</a> </p>
 
 5. Ative o container no PowerShell ou em um terminal com permissão de administrador. 
 
@@ -87,7 +84,7 @@ python manage.py runserver
 
 ```
 
-> **Acessando projeto via web (Aplicação Heroku)**
+> ## Acessando projeto via web (Aplicação Heroku)
 
 Apenas clique <a href = "https://immense-inlet-72722.herokuapp.com/">aqui.</a>.
 
