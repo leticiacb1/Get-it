@@ -1,4 +1,4 @@
-#Get-it : Como o Post-it, mas com outro verbo
+# Get-it : Como o Post-it, mas com outro verbo
 
 
 ## Descrição do Projeto
@@ -50,7 +50,7 @@ Pastas e arquivos de interesse:
 
 ## Instruções de uso 
 
-> ## Rodando Localmente - Windows
+> ### Rodando Localmente - Windows
 
 1. Realizar o clone do repositório.
 
@@ -84,10 +84,12 @@ python manage.py runserver
 
 ```
 
-> ## Acessando projeto via web (Aplicação Heroku)
+> ### Acessando projeto via web (Aplicação Heroku)
 
-Apenas clique <a href = "https://immense-inlet-72722.herokuapp.com/">aqui.</a>.
+1. Apenas clique <a href = "https://immense-inlet-72722.herokuapp.com/">aqui.</a>.
 
 ## Vídeo 
+
+<p align="center"><img src="get_it" width=550 style="float: center; margin: 0px 0px 10px 10px"></p>
 
 @2022, Insper. Quarto Semestre, Engenharia da Computação.
