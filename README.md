@@ -90,6 +90,6 @@ python manage.py runserver
 
 ## Vídeo 
 
-<p align="center"><img src="get_it" width=550 style="float: center; margin: 0px 0px 10px 10px"></p>
+![](git_it.mp4)
 
 @2022, Insper. Quarto Semestre, Engenharia da Computação.
