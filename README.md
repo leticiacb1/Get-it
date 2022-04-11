@@ -88,8 +88,6 @@ python manage.py runserver
 
 1. Apenas clique <a href = "https://immense-inlet-72722.herokuapp.com/">aqui.</a>.
 
-## Vídeo 
-
-![](git_it.mp4)
+<p align="center"><img src="getit.gif" width=550 style="float: center; margin: 0px 0px 10px 10px"></p>
 
 @2022, Insper. Quarto Semestre, Engenharia da Computação.
