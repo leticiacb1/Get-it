@@ -110,6 +110,15 @@ body {
   right: 0.2rem;
 }
 
+.tags_header{
+  display: flex;
+  margin-right: 0.3;
+  align-items: center;
+
+  font-family: 'Roboto', sans-serif;
+  font-size: small;
+}
+
 .subtitle {
 
   padding-left: 1rem;
@@ -149,9 +158,11 @@ body {
 
   padding: 0.1rem 0 0.1rem 0.3rem;
 
-  font-weight: 600;
-  font-size:medium;
+  font-weight: 400;
+  font-size:small;
   border: none;
+
+  height: 2.5rem;
 
   margin: 0.1rem 0;
 
@@ -160,16 +171,13 @@ body {
 
 .form-card-tag {
   font-size: small;
-  
-  height: 2.5rem;
   margin-top: 0.1rem;
-
 }
 
 .autoresize {
   
   display: flex;
-  min-height: 20px;
+  min-height: 30px;
 
   resize: none;
   font-family: 'Roboto', sans-serif;
@@ -197,6 +205,22 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.btn:hover { 
+  opacity: 0.93; 
+} 
+
+.all_tags{
+  margin-right: 0.1rem;
+  margin-top: 0.05rem;
+  transition: all .2s ease-in-out;
+}
+
+.all_tags:hover, .go_back:hover, .github:hover {
+  margin-right: 0.1rem;
+  margin-top: 0.05rem;
+  transform: scale(1.2);
+}
+
 /*-------------CONTAINER TAGS--------------*/
 
 .content-filtro{
@@ -211,6 +235,12 @@ body {
 
   margin-top: 0.1rem;
 
+}
+
+.informe_tags {
+  margin-left: 0.4rem;
+  font-family: 'Permanent Marker', cursive;
+  font-size: small;
 }
 
 .div-tags{
@@ -241,6 +271,12 @@ body {
   background: none;
 	cursor: pointer;
 	outline: inherit;
+
+  transition: transform .7s ease-in-out;
+}
+
+.tags:hover{
+  transform: scale(1.1);
 }
 
 /*--------------------------------*/
@@ -272,7 +308,14 @@ body {
   margin: 0 0.7rem;
 
   justify-content: space-around;
+
+  transition: transform .7s ease-in-out;
 }
+
+.card:hover {
+  transform: scale(1.1);
+}
+
 
 .card-title {
   display: flex;
@@ -330,6 +373,29 @@ i {
   padding: 0.15rem 0.15rem;
   border: 0.1rem inset black;
   border-radius: 0.4rem;
+
+  transition: transform .7s ease-in-out;
+}
+
+.tag_name:hover{
+  transform: rotate(360deg);
+}
+
+
+.edit, .delete {
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    transform-origin: bottom;
+}
+
+.edit:hover, .delete:hover {
+    animation-name: bounce;
+    animation-timing-function: ease;
+}
+@keyframes bounce {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
 }
 
 /* Novas configurações setadas após apertar o icon editar*/
@@ -366,7 +432,7 @@ i {
   flex-direction: column;
 
   width: 22%; 
-  height: 25%;
+  height: 30%;
 
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
 
@@ -375,6 +441,41 @@ i {
 
   background-color: white;
 
+}
+
+.form-edit {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+  0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+  }
+  100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+  }
+  100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+  }
 }
 
 #id_notEdit{
@@ -447,9 +548,14 @@ i {
   background-color: #32CD32;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 
-  margin-top: 1rem;
+  margin-top: 2rem;
 
 }
+
+#atualizar:hover { 
+  opacity: 0.93; 
+} 
+
 /* Fim de configurações para card de editar*/
 
 .delete, .edit , .close-over, .delete_all, .take_off_filtro, .all_tags {
@@ -467,8 +573,12 @@ i {
   bottom: 0.5rem;
 
   margin-bottom: 0.1rem;
+  transition: all .2s ease-in-out;
 }
 
+.delete_all:hover {
+  transform: scale(1.5);
+}
 
 /* ----------------- ALL_TAG PAGE ----------------------*/
 
@@ -549,6 +659,35 @@ i {
   padding: 0.2rem;
 
   margin: 0 0.7rem;
+}
+
+.card_tag {
+  animation: wiggle 2s linear infinite;
+}
+
+/* Keyframes */
+@keyframes wiggle {
+  0%, 7% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-15deg);
+  }
+  20% {
+    transform: rotateZ(10deg);
+  }
+  25% {
+    transform: rotateZ(-10deg);
+  }
+  30% {
+    transform: rotateZ(6deg);
+  }
+  35% {
+    transform: rotateZ(-4deg);
+  }
+  40%, 100% {
+    transform: rotateZ(0);
+  }
 }
 
 #pin_push{

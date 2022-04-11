@@ -7,15 +7,20 @@
   <p class="subtitle">Como o Post-it, mas com outro verbo</p>
   
   <form action="/all_tags" class="form_tags_all" >
-    <button class="all_tags" type="submit">
+    <div class="tags_header">
+      <button class="all_tags" type="submit">
       <i class="material-icons">&#xe98b;</i>
-    </button>
+      </button>
+      <a href="https://github.com/insper-tecnologias-web/projeto-1b-leticiacb1" class="github">
+        <i style="font-size:30px;color: black;" class="fa">&#xf09b;</i>
+      </a>
+    </div>
   </form>
-  
 </div>
 
 <!-- Container de tags e filtro -->
 <div class="content-filtro">
+  <span class="informe_tags"> Tags: </span>
   <div class="div-tags">
     {% for tag in tags %}
     <form action="/tag_filtrada" method="post">
@@ -35,7 +40,7 @@
   <!------------FORMULARIO DE CRIACAO----------------->
     <form method="post" class="form-card" autocomplete="off">
       {% csrf_token %}
-      
+
       <input
         class="form-card-title"
         type="text"
