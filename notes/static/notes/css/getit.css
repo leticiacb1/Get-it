@@ -142,7 +142,7 @@ body {
 
   justify-content: space-around;
   width: 35%; 
-  height: 21%;
+  height: 24%;
 
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
 
@@ -150,6 +150,15 @@ body {
   padding: 0.5rem;
 
   margin-top: 1rem;
+}
+
+.div_input{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 4rem;
+
+  margin: 0.1rem 0;
 }
 
 .form-card-title, .form-card-tag {
@@ -162,30 +171,29 @@ body {
   font-size:small;
   border: none;
 
-  height: 2.5rem;
-
-  margin: 0.1rem 0;
+  width: 100%;
+  height: 1.5rem;
 
   font-family: 'Roboto', sans-serif;
 }
 
 .form-card-tag {
   font-size: small;
-  margin-top: 0.1rem;
+  width: 100%;
+  height: 1.5rem;
 }
 
 .autoresize {
   
   display: flex;
-  min-height: 30px;
+  min-height: 1.5rem;;
+  width: 100%;
 
   resize: none;
   font-family: 'Roboto', sans-serif;
   font-size: small;
 
   padding: 0.3rem 0 0 0.3rem;
-  margin-bottom: 0.1rem;
-  margin-top: 0.3rem;
   border: none;
 }
 
@@ -291,6 +299,7 @@ body {
   padding-top: 0.4rem;
 
   justify-content: space-evenly;
+  overflow: auto;
 }
 
 .card {
@@ -305,7 +314,7 @@ body {
   height: 8rem;
   padding: 0.2rem;
 
-  margin: 0 0.7rem;
+  margin: 0.1rem 0.7rem;
 
   justify-content: space-around;
 

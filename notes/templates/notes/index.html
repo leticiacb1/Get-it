@@ -41,27 +41,36 @@
     <form method="post" class="form-card" autocomplete="off">
       {% csrf_token %}
 
-      <input
-        class="form-card-title"
-        type="text"
-        name="titulo"
-        placeholder="Titulo"
-        required
-      />
+      <div class="div_input">
+        <i class="material-icons" style="font-size:0.8rem;">&#xe26c;</i>
+        <input
+          class="form-card-title"
+          type="text"
+          name="titulo"
+          placeholder="Titulo"
+          required
+        />
+      </div>
+      
+      <div class="div_input">
+        <i class="material-icons" style="font-size:0.8rem;">&#xe54e;</i>
+        <input
+          class="form-card-tag"
+          type="text"
+          name="tag"
+          placeholder="Tag (Opcional)"
+        />
+      </div>
 
-      <input
-        class="form-card-tag"
-        type="text"
-        name="tag"
-        placeholder="Tag (Opcional)"
-      />
-
-      <textarea
-        class="autoresize"
-        name="detalhes"
-        placeholder="Digite o conteudo..."
-        required
-      ></textarea>
+      <div class="div_input">
+        <i class="material-icons" style="font-size:0.8rem;">&#xe0b9;</i>
+        <textarea
+          class="autoresize"
+          name="detalhes"
+          placeholder="Digite o conteudo..."
+          required
+        ></textarea>
+      </div>
 
       <button class="btn" type="submit" name="criar">Criar</button>
 
